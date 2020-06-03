@@ -16,7 +16,7 @@ function main() {
 function installPM2() {
     return ssh.execCommand(
         'sudo npm install pm2 -g', {
-            cwd: 'ubuntu/riot-express-todo-list'
+            cwd: '/home/ubuntu'
         });
 }
 
@@ -24,7 +24,7 @@ function installPM2() {
 function transferProjectToRemote(failed, successful) {
     return ssh.putDirectory(
         '../riot-express-todo-list',
-        'ubuntu/riot-express-todo-list-temp',
+        '/home/ubuntu/riot-express-todo-list-temp',
         {
             recursive: true,
             concurrency: 1,
@@ -86,7 +86,7 @@ function sshConnect() {
     ssh
         .connect({
             // TODO: ADD YOUR IP ADDRESS BELOW (e.g. '12.34.5.67')
-            host: '54.87.224.37',
+            host: '34.203.33.131',
             username: 'ubuntu',
             privateKey: 'riot-key.ppk'
         })
